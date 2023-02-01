@@ -19,7 +19,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
 ?>
 
 <div class="shipping-calculator-container">
-  <h3>예상비용 계산하기</h3>
+  <h3><?php echo __("Calculate your estimated shipping fee", "apmmust"); ?></h3>
   <ul>
     <li class="field country-field">
       <div class="left">
@@ -92,7 +92,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
 </div>
 
 <div class="shipping-fee-table-container">
-  <h3><?php echo __("국가별 배송 비용", "apmmust"); ?> ($)</h3>
+  <h3><?php echo __("Shipping Price Table", "apmmust"); ?> ($)</h3>
   <ul>
     <li class="field">
       <div class="left"><?php echo __("Country", "apmmust") ?></div>
