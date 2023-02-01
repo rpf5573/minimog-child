@@ -2,11 +2,14 @@
 $woo_countries = WC()->countries->get_countries();
 $shipping_fields = apmmust_get_shipping_fields();
 
+if (empty($shipping_fields)) {
+  return;
+}
+
 $box_dimensions = apmmust_get_shipping_box_dimensions();
 $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
   if (!$acc) $acc = [];
   $acc[] = $cur['country'];
-  var_dump($acc);
   return $acc;
 }));
 ?>
