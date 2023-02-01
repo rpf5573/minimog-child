@@ -1,3 +1,22 @@
+// 모바일에서 환율 버튼 오류 해결 - 시작
+(($) => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const $trigger = $(".currency-switcher-menu .menu-item-has-children");
+    if ($trigger.length === 0) {
+      console.warn("concurrency switcher 가 없습니다");
+      return;
+    }
+    const $topBarWrap = $(".top-bar-wrap");
+    const $submenu = $(".currency-switcher-menu .sub-menu");
+    $trigger.on("click", () => {
+      $topBarWrap.toggleClass("overflow-visible");
+      $submenu.toggleClass("swicher-visible");
+    });
+  });
+})(jQuery);
+// 모바일에서 환율 버튼 오류 해결 - 끝
+
+// 배송비 계산기
 (($) => {
   // calculator
   document.addEventListener("DOMContentLoaded", () => {
@@ -125,42 +144,47 @@
 
     const $country = $('.shipping-fee-table-container select[name="country"]');
     const $shippingType = $(
-      ".shipping-fee-table-container input[name='shipping_type']"
+      ".shipping-fee-table-container input[name='shipping_type_in_price_table']"
     );
 
     if ($country.length === 0 || $shippingType.length === 0) return;
 
     const action = "apmmust_shipping_fee_table_action";
     const generateData = () => {
+      const $checkedShippingType = $(
+        ".shipping-fee-table-container input[name='shipping_type_in_price_table']:checked"
+      );
       return {
         action,
         country: $country.val(),
-        shipping_type: $shippingType.val(),
+        shipping_type: $checkedShippingType.val(),
       };
     };
     const handleResponse = (response) => {
-      const {
-        success,
-        data: { table },
-      } = response;
-      if (!success) {
-        alert("알수없는 에러가 발생했습니다");
+      if (!response.success) {
+        alert(response.data.message);
+        $priceTable.addClass("invisible");
         return;
       }
-      console.log("table", table);
+
+      const {
+        data: { table },
+      } = response;
+      table.forEach((price, index) => {
+        $(`#price-kg-${index + 1}`).text(`$${price}`);
+      });
+      $priceTable.removeClass("invisible");
     };
 
     $country.on("change", () => {
       const data = generateData();
       $.post(ajaxurl, data, (response) => {
-        console.log("response", response);
         handleResponse(response);
       });
     });
     $shippingType.on("change", () => {
       const data = generateData();
       $.post(ajaxurl, data, (response) => {
-        console.log("response", response);
         handleResponse(response);
       });
     });

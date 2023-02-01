@@ -105,9 +105,9 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
         </div>
         <div class="right">
           <p>
-            <input type="radio" name="shipping_type" id="shipping_type_esm_in_price_table" value="ems" checked>
+            <input type="radio" name="shipping_type_in_price_table" id="shipping_type_esm_in_price_table" value="ems" checked>
             <label for="shipping_type_esm_in_price_table">EMS</label>
-            <input type="radio" name="shipping_type" id="shipping_type_ups_in_price_table" value="ups">
+            <input type="radio" name="shipping_type_in_price_table" id="shipping_type_ups_in_price_table" value="ups">
             <label for="shipping_type_ups_in_price_table">UPS</label>
           </p>
         </div>

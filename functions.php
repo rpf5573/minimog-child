@@ -215,18 +215,21 @@ add_filter('nonce_user_logged_out', function($uid, $action) {
 
 // brand taxonomy에 hierarchical 옵션을 설정하는 코드
 // 상위 브랜드를 설정할 수 있게됩니다
-// 상위 브랜드 설정 코드 시작
+// 상위 브랜드 설정 코드 - 시작
 add_filter('register_product_brand_taxonomy_args', 'apmmust_change_product_brand_taxonomy_args');
 function apmmust_change_product_brand_taxonomy_args($args) {
     $args['hierarchical'] = true;
     return $args;
 }
-// 상위 브랜드 설정 코드 끝
+// 상위 브랜드 설정 코드 - 끝
+
+
+
 
 
 // 사용자 리스트 페이지에 사용자의 국가를 보이도록 하고
 // 국가별 필터/정렬 기능을 추가합니다
-// 국가별 필터/정렬 기능 추가 코드 시작
+// 국가별 필터/정렬 기능 추가 코드 - 시작
 function apmmust_get_user_country( $country_code ) {
     $countries = WC()->countries->get_countries();
     if ( ! isset( $countries[ $country_code ] ) ) {
@@ -343,13 +346,17 @@ function apmmust_filter_users_by_filter_by_country( $query ) {
     $query->set( 'meta_query', $meta_query );
     return $query;
 }
-// 국가별 필터/정렬 기능 추가 코드 끝
+// 국가별 필터/정렬 기능 추가 코드 - 끝
+
+
+
+
 
 // 배송비 계산 기능 추가
-
 add_action( 'wp_enqueue_scripts', 'apmmust_enqueue_scripts', 10 );
 function apmmust_enqueue_scripts() {
   wp_enqueue_script( 'apmmust-main-js', get_stylesheet_directory_uri() . '/main.js', array('jquery'), '0.0.1', true );
+  wp_localize_script( 'apmmust-main-js', 'apmmust_ajax_obj', array('ajaxurl' => admin_url('admin-ajax.php' )));
 }
 
 add_shortcode('shipping_calculator', 'apmmust_shipping_calculator');
@@ -412,14 +419,26 @@ function apmmust_get_weight_fomula() {
   );
 }
 
+function apmmust_get_possible_shipping_type_of_country(&$rows) {
+  $country_possible_shipping_type_map = [];
+  foreach($rows as $row) {
+    $country = $row['country'];
+    if (!isset($country_possible_shipping_type_map[$country])) {
+      $country_possible_shipping_type_map[$country] = [];
+    }
+    $country_possible_shipping_type_map[$country][] = $row['shipping_type'];
+  }
+  return $country_possible_shipping_type_map;
+}
+
 add_action( 'wp_ajax_apmmust_calculate_shipping_fee_action', 'apmmust_calculate_shipping_fee_action' );
 add_action( 'wp_ajax_nopriv_apmmust_calculate_shipping_fee_action', 'apmmust_calculate_shipping_fee_action' );
 function apmmust_calculate_shipping_fee_action() {
   if (!isset($_POST['country']) || !isset($_POST['shipping_type']) || !isset($_POST['weight']) || !isset($_POST['box_dimension'])) {
     wp_send_json_error(array(
-      "code" => 404,
+      "code" => 401,
       "message" => '값이 설정되어 있지 않습니다'
-    ));
+    ), 401);
     return;
   }
 
@@ -524,7 +543,7 @@ function apmmust_shipping_fee_table_action() {
     wp_send_json_error(array(
       "code" => 403,
       "message" => '값이 없습니다'
-    ));
+    ), 401);
     return;
   }
 
@@ -532,11 +551,21 @@ function apmmust_shipping_fee_table_action() {
     wp_send_json_error(array(
       "code" => 402,
       "message" => '올바르지 않은 값입니다'
-    ));
+    ), 401);
     return;
   }
 
   $rows = apmmust_get_shipping_fields();
+  
+  // 가능한 운송 수단을 선택했는지 점검
+  $country_possible_shipping_type_map = apmmust_get_possible_shipping_type_of_country($rows);
+  if (!in_array($shipping_type, $country_possible_shipping_type_map[$country])) {
+    wp_send_json_error(array(
+      'code' => 401,
+      'message' => '가능한 운송 방법이 아닙니다',
+    ));
+    return;
+  }
 
   for ($i = 0; $i < count($rows); $i += 1) {
     $row = $rows[$i];
