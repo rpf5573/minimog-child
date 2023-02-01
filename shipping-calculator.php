@@ -24,7 +24,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
   <ul>
     <li class="field country-field">
       <div class="left">
-        <label>배송지</label>
+        <label><?php echo __("Country", "apmmust") ?></label>
       </div>
       <div class="right">
         <p>
@@ -39,7 +39,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
     </li>
     <li class="field shipping-type">
       <div class="left">
-        <label>배송방법</label>
+        <label><?php echo __("Shipping method", "apmmust") ?></label>
       </div>
       <div class="right">
         <p>
@@ -52,7 +52,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
     </li>
     <li class="field weight-field">
       <div class="left">
-        <label>무게 <span>(kg)</span></label>
+        <label><?php echo __("Weight", "apmmust") ?> <span>(kg)</span></label>
       </div>
       <div class="right">
         <p>
@@ -88,7 +88,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
     </div>
   </div>
   <div class="calculate-container">
-    <button class="calculate-button" type="button">계산하기</button>
+    <button class="calculate-button" type="button"><?php echo __("Calculate", "apmmust") ?></button>
   </div>
 </div>
 
@@ -97,7 +97,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
   <div class="filter-container">
     <ul>
       <li class="field">
-        <div class="left">배송지</div>
+        <div class="left"><?php echo __("Country", "apmmust") ?></div>
         <div class="right">
           <p>
             <select name="country"> <?php
@@ -111,7 +111,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
       </li>
       <li class="field">
         <div class="left">
-          <label>배송방법</label>
+          <label><?php echo __("Shipping method", "apmmust") ?></label>
         </div>
         <div class="right">
           <p>
