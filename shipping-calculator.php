@@ -1,7 +1,5 @@
 <?php
 $woo_countries = WC()->countries->get_countries();
-ray('woo_countries', $woo_countries);
-
 $shipping_fields = apmmust_get_shipping_fields();
 
 if (empty($shipping_fields)) { ?>
