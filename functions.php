@@ -361,7 +361,7 @@ function apmmust_enqueue_scripts() {
 
 add_shortcode('shipping_calculator', 'apmmust_shipping_calculator');
 function apmmust_shipping_calculator($attrs) {
-  return get_template_part('shipping-calculator');
+  // return get_template_part('shipping-calculator');
 }
 
 function apmmust_get_shipping_fields() {
