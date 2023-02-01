@@ -1,5 +1,7 @@
 <?php
 $woo_countries = WC()->countries->get_countries();
+ray('woo_countries', $woo_countries);
+
 $shipping_fields = apmmust_get_shipping_fields();
 
 if (empty($shipping_fields)) { ?>
@@ -92,7 +94,7 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
 </div>
 
 <div class="shipping-fee-table-container">
-  <h3>국가별 배송 비용 ($)</h3>
+  <h3><?php echo __("국가별 배송 비용", "apmmust"); ?> ($)</h3>
   <div class="filter-container">
     <ul>
       <li class="field">

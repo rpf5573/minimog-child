@@ -13,6 +13,11 @@ Tags: editor-style, featured-images, microformats, post-formats, rtl-language-su
   margin-bottom: 50px;
 }
 
+.shipping-calculator-container input,
+.shipping-fee-table-container input {
+  text-align: center;
+}
+
 .shipping-calculator-container .invisible,
 .shipping-fee-table-container .invisible {
   display: none !important;
@@ -117,4 +122,27 @@ Tags: editor-style, featured-images, microformats, post-formats, rtl-language-su
 
 .price-table .kg {
   width: calc(100% / 6);
+}
+
+@media screen and (max-width: 767px) {
+  .shipping-calculator-container > ul,
+  .shipping-fee-table-container > ul {
+    flex-direction: column;
+    border-top: 1px solid #ddd;
+  }
+  .shipping-calculator-container .field,
+  .shipping-fee-table-container .field {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    border-top: none;
+    border-right: 1px solid #ddd;
+  }
+
+  .shipping-calculator-container .field .left,
+  .shipping-fee-table-container .field .left {
+    font-size: 0.84rem;
+  }
+  .price-table {
+    font-size: 0.9rem;
+  }
 }
