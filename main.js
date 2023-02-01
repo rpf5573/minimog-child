@@ -111,8 +111,6 @@
       $button.attr("disabled", true);
 
       $.post(ajaxurl, data, (response) => {
-        const price = `$${response.data.price_usd}`;
-
         if (!response.success) {
           if (response.data.message) {
             alert(response.data.message);

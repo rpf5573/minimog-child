@@ -516,6 +516,16 @@ function apmmust_calculate_shipping_fee_action() {
 
   $divisor = 30;
 
+  // 가능한 운송 수단을 선택했는지 점검
+  $country_possible_shipping_type_map = apmmust_get_possible_shipping_type_of_country($rows);
+  if (!in_array($shipping_type, $country_possible_shipping_type_map[$country])) {
+    wp_send_json_error(array(
+      'code' => 401,
+      'message' => "{$shipping_type} is not supported at {$country}",
+    ));
+    return;
+  }
+
   for ($i = 0; $i < count($rows); $i += 1) {
     $row = $rows[$i];
     
@@ -588,7 +598,7 @@ function apmmust_shipping_fee_table_action() {
   if (!in_array($shipping_type, $country_possible_shipping_type_map[$country])) {
     wp_send_json_error(array(
       'code' => 401,
-      'message' => "{$shipping_type} is not supported in {$country}",
+      'message' => "{$shipping_type} is not supported at {$country}",
     ));
     return;
   }
