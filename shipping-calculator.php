@@ -78,11 +78,11 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
   </ul>
   <div class="calculate-result invisible">
     <div class="estimate-price">
-      <span>예상비용 : </span>
+      <span><?php echo __("Total price", "apmmust"); ?> : </span>
       <span></span>
     </div>
     <div class="estimate-date">
-      <span>예상시간 : </span>
+    <span><?php echo __("Estimate date", "apmmust"); ?> : </span>
       <span></span>
     </div>
   </div>
