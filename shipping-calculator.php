@@ -2,13 +2,14 @@
 $woo_countries = WC()->countries->get_countries();
 $shipping_fields = apmmust_get_shipping_fields();
 
-if (empty($shipping_fields)) { ?>
+if (empty($shipping_fields)) {
+  ob_start(); ?>
 <div class="woocommerce-NoticeGroup">
   <ul class="woocommerce-error" role="alert">
     <li>배송비가 설정되지 않았습니다. 관리자에게 문의해주세요</li>
   </ul>
 </div> <?php
-  return;
+  return ob_get_clean();
 }
 
 $box_dimensions = apmmust_get_shipping_box_dimensions();
