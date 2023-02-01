@@ -353,7 +353,7 @@ function apmmust_filter_users_by_filter_by_country( $query ) {
 
 
 // 배송비 계산 기능 추가
-add_action('plugins_loaded', 'apmmust_add_shipping_fee_option_page');
+add_action('after_setup_theme', 'apmmust_add_shipping_fee_option_page');
 function apmmust_add_shipping_fee_option_page() {
   do_action( 'qm/start', 'GOGOGO' );
   if( function_exists('acf_add_options_page') ) {
