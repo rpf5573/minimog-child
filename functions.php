@@ -11,6 +11,11 @@ if ( ! function_exists( 'minimog_child_enqueue_scripts' ) ) {
 }
 add_action( 'wp_enqueue_scripts', 'minimog_child_enqueue_scripts', 15 );
 
+add_action('admin_enqueue_scripts', 'apmmust_admin_style', 10);
+function apmmust_admin_style() {
+  wp_enqueue_style( 'apmmust_admin_style', get_stylesheet_directory_uri() . '/admin-style.css' );
+}
+
 //** @snippet       Hide Prices from search engines **//
 
  add_filter( 'woocommerce_structured_data_product_offer', '__return_empty_array' );
