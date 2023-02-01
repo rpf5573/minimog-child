@@ -597,7 +597,6 @@ function apmmust_shipping_fee_table_action() {
   // 가능한 운송 수단을 선택했는지 점검
   $country_possible_shipping_type_map = apmmust_get_possible_shipping_type_of_country($rows);
   if (!in_array($shipping_type, $country_possible_shipping_type_map[$country])) {
-    $country_map = WC()->countries->get_countries();
     $type = strtoupper($shipping_type);
     wp_send_json_error(array(
       'code' => 401,
