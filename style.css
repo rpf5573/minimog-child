@@ -9,34 +9,6 @@ Text Domain:  minimog-child
 Tags: editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 */
 
-.shipping_fee_kg_field {
-  display: flex;
-  align-items: center;
-  column-gap: 6px;
-
-  padding: 8px !important;
-}
-.shipping_fee_kg_field .acf-label {
-  margin: 0;
-}
-.shipping_fee_kg_field .acf-label label {
-  min-width: 45px;
-}
-
-.shipping_fee_container_group thead > tr {
-  display: none;
-}
-.shipping_fee_container_group tbody td {
-  padding: 0;
-}
-.shipping_fee_container_group .shipping_fee_inner_group {
-  padding: 0;
-}
-
-.shipping_fee_container_group .shipping_fee_inner_group .acf-fields.-border {
-  border: none;
-}
-
 .shipping-calculator-container {
   margin-bottom: 50px;
 }
