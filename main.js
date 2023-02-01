@@ -123,7 +123,7 @@
         ).text(`$${response.data.price_usd}`);
         $(
           ".shipping-calculator-container .calculate-result .estimate-date span:nth-of-type(2)"
-        ).text(`${response.data.estimate_date}일`);
+        ).text(`${response.data.estimate_date} days`);
 
         $result.removeClass("invisible");
         $button.attr("disabled", false);
