@@ -588,7 +588,7 @@ function apmmust_shipping_fee_table_action() {
   if (!in_array($shipping_type, $country_possible_shipping_type_map[$country])) {
     wp_send_json_error(array(
       'code' => 401,
-      'message' => 'This is not possible shipping method',
+      'message' => "{$shipping_type} is not supported in {$country}",
     ));
     return;
   }
