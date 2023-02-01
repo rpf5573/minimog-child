@@ -1,10 +1,9 @@
 <?php
 $woo_countries = WC()->countries->get_countries();
 $shipping_fields = apmmust_get_shipping_fields();
-if ($shipping_fields === null) {
-  exit;
-}
 do_action( 'qm/debug', $shipping_fields );
+exit;
+
 $box_dimensions = apmmust_get_shipping_box_dimensions();
 $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
   if (!$acc) $acc = [];
