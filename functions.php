@@ -463,7 +463,7 @@ function apmmust_calculate_shipping_fee_action() {
   if (!isset($_POST['country']) || !isset($_POST['shipping_type']) || !isset($_POST['weight']) || !isset($_POST['box_dimension'])) {
     wp_send_json_error(array(
       "code" => 401,
-      "message" => '값이 설정되어 있지 않습니다'
+      "message" => 'no value'
     ), 401);
     return;
   }
@@ -476,7 +476,7 @@ function apmmust_calculate_shipping_fee_action() {
   if (empty($country) || empty($shipping_type) || empty($weight) || empty($box_dimension)) {
     wp_send_json_error(array(
       "code" => 403,
-      "message" => '값이 없습니다'
+      "message" => 'empty value'
     ));
     return;
   }
@@ -484,7 +484,7 @@ function apmmust_calculate_shipping_fee_action() {
   if ($shipping_type !== 'ems' && $shipping_type !== 'ups') {
     wp_send_json_error(array(
       "code" => 402,
-      "message" => '올바르지 않은 값입니다'
+      "message" => 'invalid value'
     ));
     return;
   }
@@ -494,7 +494,7 @@ function apmmust_calculate_shipping_fee_action() {
   if ($weight <= 0) {
     wp_send_json_error(array(
       "code" => 402,
-      "message" => '올바르지 않은 값입니다'
+      "message" => 'invalid value'
     ));
     return;
   }
@@ -502,7 +502,7 @@ function apmmust_calculate_shipping_fee_action() {
   if (!isset($box_dimension['width']) || !isset($box_dimension['height']) || !isset($box_dimension['depth'])) {
     wp_send_json_error(array(
       "code" => 404,
-      "message" => '박스 크기 값이 없습니다'
+      "message" => 'invalid value'
     ));
     return;
   }
@@ -557,7 +557,7 @@ function apmmust_shipping_fee_table_action() {
   if (!isset($_POST['country']) || !isset($_POST['shipping_type'])) {
     wp_send_json_error(array(
       "code" => 404,
-      "message" => '값이 설정되어 있지 않습니다'
+      "message" => 'no value'
     ));
     return;
   }
@@ -568,7 +568,7 @@ function apmmust_shipping_fee_table_action() {
   if (empty($country) || empty($shipping_type)) {
     wp_send_json_error(array(
       "code" => 403,
-      "message" => '값이 없습니다'
+      "message" => 'empty value'
     ), 401);
     return;
   }
@@ -576,7 +576,7 @@ function apmmust_shipping_fee_table_action() {
   if ($shipping_type !== 'ems' && $shipping_type !== 'ups') {
     wp_send_json_error(array(
       "code" => 402,
-      "message" => '올바르지 않은 값입니다'
+      "message" => 'invalid value'
     ), 401);
     return;
   }
@@ -588,7 +588,7 @@ function apmmust_shipping_fee_table_action() {
   if (!in_array($shipping_type, $country_possible_shipping_type_map[$country])) {
     wp_send_json_error(array(
       'code' => 401,
-      'message' => '가능한 운송 방법이 아닙니다',
+      'message' => 'This is not possible shipping method',
     ));
     return;
   }

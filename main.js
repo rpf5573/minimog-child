@@ -114,7 +114,11 @@
         const price = `$${response.data.price_usd}`;
 
         if (!response.success) {
-          alert("알수없는 에러가 발생했습니다");
+          if (response.data.message) {
+            alert(response.data.message);
+            return;
+          }
+          alert("Unknown Error");
           return;
         }
 
