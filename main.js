@@ -109,14 +109,15 @@
       };
 
       $button.attr("disabled", true);
-
       $.post(ajaxurl, data, (response) => {
         if (!response.success) {
           if (response.data.message) {
             alert(response.data.message);
+            $button.attr("disabled", false);
             return;
           }
           alert("Unknown Error");
+          $button.attr("disabled", false);
           return;
         }
 
