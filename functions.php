@@ -355,6 +355,7 @@ function apmmust_filter_users_by_filter_by_country( $query ) {
 // 배송비 계산 기능 추가
 add_action('plugins_loaded', 'apmmust_add_shipping_fee_option_page');
 function apmmust_add_shipping_fee_option_page() {
+  do_action( 'qm/start', 'GOGOGO' );
   if( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(
         'page_title'    => '배송비 관리',
@@ -376,7 +377,7 @@ function apmmust_enqueue_scripts() {
 add_shortcode('shipping_calculator', 'apmmust_shipping_calculator');
 function apmmust_shipping_calculator($attrs) {
   if( function_exists('acf_add_options_page') ) {
-    return get_template_part('shipping-calculator');
+    // return get_template_part('shipping-calculator');
   }
   return 'ACF Pro 플러그인이 설치되어 있지 않습니다';
 }
