@@ -92,7 +92,7 @@
       if (!shippingType) hasError = true;
 
       if (hasError) {
-        alert("올바른 값을 입력해 주세요");
+        alert("Check the field again please");
         return;
       }
 
