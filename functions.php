@@ -353,6 +353,20 @@ function apmmust_filter_users_by_filter_by_country( $query ) {
 
 
 // 배송비 계산 기능 추가
+add_action('plugins_loaded', 'apmmust_add_shipping_fee_option_page');
+function apmmust_add_shipping_fee_option_page() {
+  if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+        'page_title'    => '배송비 관리',
+        'menu_title'    => '배송비 관리',
+        'menu_slug'     => 'global-shopping-fee-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
+  }
+}
+
+
 add_action( 'wp_enqueue_scripts', 'apmmust_enqueue_scripts', 10 );
 function apmmust_enqueue_scripts() {
   wp_enqueue_script( 'apmmust-main-js', get_stylesheet_directory_uri() . '/main.js', array('jquery'), '0.0.1', true );
