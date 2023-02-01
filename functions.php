@@ -404,7 +404,7 @@ function apmmust_get_shipping_fields() {
     endwhile;
   endif;
 
-  do_action( 'qm/start', $rows );
+  do_action( 'qm/debug', $rows );
 
   return $rows;
 }
