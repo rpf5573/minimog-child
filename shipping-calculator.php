@@ -2,7 +2,12 @@
 $woo_countries = WC()->countries->get_countries();
 $shipping_fields = apmmust_get_shipping_fields();
 
-if (empty($shipping_fields)) {
+if (empty($shipping_fields)) { ?>
+<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">
+  <ul class="woocommerce-error" role="alert">
+    <li>배송비가 설정되지 않았습니다. 관리자에게 문의해주세요</li>
+  </ul>
+</div> <?php
   return;
 }
 
