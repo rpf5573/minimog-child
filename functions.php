@@ -381,7 +381,8 @@ function apmmust_enqueue_scripts() {
 add_shortcode('shipping_calculator', 'apmmust_shipping_calculator');
 function apmmust_shipping_calculator($attrs) {
   if( function_exists('acf_add_options_page') ) {
-    return get_template_part('shipping-calculator');
+    // return get_template_part('shipping-calculator');
+    return "HELLO";
   }
   return 'ACF Pro 플러그인이 설치되어 있지 않습니다';
 }
