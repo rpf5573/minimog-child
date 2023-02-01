@@ -93,36 +93,34 @@ $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
 
 <div class="shipping-fee-table-container">
   <h3><?php echo __("국가별 배송 비용", "apmmust"); ?> ($)</h3>
-  <div class="filter-container">
-    <ul>
-      <li class="field">
-        <div class="left"><?php echo __("Country", "apmmust") ?></div>
-        <div class="right">
-          <p>
-            <select name="country"> <?php
-              foreach ($countries as $country) {
-                $full_name = $woo_countries[strtoupper($country)]; ?>
-                <option value="<?php echo $country; ?>"><?php echo $full_name; ?></option> <?php
-              } ?>
-            </select>
-          </p>
-        </div>
-      </li>
-      <li class="field">
-        <div class="left">
-          <label><?php echo __("Shipping method", "apmmust") ?></label>
-        </div>
-        <div class="right">
-          <p>
-            <input type="radio" name="shipping_type_in_price_table" id="shipping_type_esm_in_price_table" value="ems" checked>
-            <label for="shipping_type_esm_in_price_table">EMS</label>
-            <input type="radio" name="shipping_type_in_price_table" id="shipping_type_ups_in_price_table" value="ups">
-            <label for="shipping_type_ups_in_price_table">UPS</label>
-          </p>
-        </div>
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li class="field">
+      <div class="left"><?php echo __("Country", "apmmust") ?></div>
+      <div class="right">
+        <p>
+          <select name="country"> <?php
+            foreach ($countries as $country) {
+              $full_name = $woo_countries[strtoupper($country)]; ?>
+              <option value="<?php echo $country; ?>"><?php echo $full_name; ?></option> <?php
+            } ?>
+          </select>
+        </p>
+      </div>
+    </li>
+    <li class="field">
+      <div class="left">
+        <label><?php echo __("Shipping method", "apmmust") ?></label>
+      </div>
+      <div class="right">
+        <p>
+          <input type="radio" name="shipping_type_in_price_table" id="shipping_type_esm_in_price_table" value="ems" checked>
+          <label for="shipping_type_esm_in_price_table">EMS</label>
+          <input type="radio" name="shipping_type_in_price_table" id="shipping_type_ups_in_price_table" value="ups">
+          <label for="shipping_type_ups_in_price_table">UPS</label>
+        </p>
+      </div>
+    </li>
+  </ul>
   <table class="price-table invisible"> <?php
     for ($i = 1; $i <= 10; $i += 1) { ?>
       <tr> <?php
