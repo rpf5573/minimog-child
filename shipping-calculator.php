@@ -1,12 +1,12 @@
 <?php
 $woo_countries = WC()->countries->get_countries();
 $shipping_fields = apmmust_get_shipping_fields();
-var_dump($shipping_fields);
 
 $box_dimensions = apmmust_get_shipping_box_dimensions();
 $countries = array_unique(array_reduce($shipping_fields, function ($acc, $cur) {
   if (!$acc) $acc = [];
   $acc[] = $cur['country'];
+  var_dump($acc);
   return $acc;
 }));
 ?>
