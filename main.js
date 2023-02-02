@@ -1,5 +1,6 @@
 // 모바일에서 환율 버튼 오류 해결 - 시작
 (($) => {
+  console.log("loaded");
   document.addEventListener("DOMContentLoaded", () => {
     const $trigger = $(".currency-switcher-menu .menu-item-has-children");
     if ($trigger.length === 0) {

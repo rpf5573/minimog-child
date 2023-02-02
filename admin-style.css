@@ -1,27 +1,30 @@
-.shipping_fee_kg_field {
+.wp-admin .shipping_fee_kg_field {
   display: flex;
   align-items: center;
   column-gap: 6px;
 
   padding: 8px !important;
 }
-.shipping_fee_kg_field .acf-label {
+.wp-admin .shipping_fee_kg_field .acf-label {
   margin: 0;
 }
-.shipping_fee_kg_field .acf-label label {
+.wp-admin .shipping_fee_kg_field .acf-label label {
   min-width: 45px;
 }
 
-.shipping_fee_container_group thead > tr {
+.wp-admin .shipping_fee_container_group thead > tr {
   display: none;
 }
-.shipping_fee_container_group tbody td {
+.wp-admin .shipping_fee_container_group tbody td {
   padding: 0;
 }
-.shipping_fee_container_group .shipping_fee_inner_group {
+.wp-admin .shipping_fee_container_group .shipping_fee_inner_group {
   padding: 0;
 }
 
-.shipping_fee_container_group .shipping_fee_inner_group .acf-fields.-border {
+.wp-admin
+  .shipping_fee_container_group
+  .shipping_fee_inner_group
+  .acf-fields.-border {
   border: none;
 }
