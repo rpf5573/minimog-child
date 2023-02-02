@@ -1,0 +1,142 @@
+.shipping-calculator-container {
+  margin-bottom: 50px;
+}
+
+.shipping-calculator-container input,
+.shipping-fee-table-container input {
+  text-align: center;
+}
+
+.shipping-calculator-container .invisible,
+.shipping-fee-table-container .invisible {
+  display: none !important;
+}
+
+.shipping-calculator-container ul,
+.shipping-fee-table-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.shipping-calculator-container li,
+.shipping-fee-table-container li {
+  margin: 0;
+  padding: 0;
+}
+
+.shipping-calculator-container ul,
+.shipping-fee-table-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.shipping-calculator-container .field,
+.shipping-fee-table-container .field {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+  height: 3.4rem;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  border-right: none;
+}
+
+.shipping-fee-table-container .field {
+  border-bottom: 1px solid #ddd;
+}
+
+.shipping-calculator-container .field .left,
+.shipping-fee-table-container .field .left {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 100%;
+  color: #333;
+  font-size: 1rem;
+  background-color: #f8f8f8;
+}
+
+.shipping-calculator-container .field label[for="shipping_type_esm"],
+.shipping-fee-table-container
+  .field
+  label[for="shipping_type_esm_in_price_table"] {
+  padding-right: 20px;
+}
+
+.shipping-calculator-container .field .right,
+.shipping-fee-table-container .field .right {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 6px 20px;
+}
+
+.shipping-calculator-container .field:nth-of-type(2n),
+.shipping-fee-table-container .field:nth-of-type(2n) {
+  border-right: 1px solid #ddd;
+}
+
+.shipping-calculator-container .field:nth-of-type(3),
+.shipping-calculator-container .field:nth-of-type(4) {
+  border-bottom: 1px solid #ddd;
+}
+
+.shipping-calculator-container .calculate-container {
+  display: flex;
+  justify-content: center;
+}
+
+.shipping-calculator-container input.error,
+.shipping-calculator-container select.error {
+  border-color: #d9534f;
+}
+
+.shipping-calculator-container .calculate-result {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 20px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.shipping-fee-table-container {
+}
+
+.price-table .kg {
+  width: calc(100% / 6);
+}
+
+@media screen and (max-width: 767px) {
+  .shipping-calculator-container > ul,
+  .shipping-fee-table-container > ul {
+    flex-direction: column;
+  }
+  .shipping-calculator-container .field,
+  .shipping-fee-table-container .field {
+    width: 100%;
+    border-top: none;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+  }
+
+  .shipping-calculator-container .field:nth-of-type(1),
+  .shipping-fee-table-container .field:nth-of-type(1) {
+    border-top: 1px solid #ddd;
+  }
+
+  .shipping-calculator-container .field .left,
+  .shipping-fee-table-container .field .left {
+    font-size: 0.84rem;
+  }
+  .price-table {
+    font-size: 0.9rem;
+  }
+}

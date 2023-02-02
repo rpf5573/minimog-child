@@ -6,7 +6,8 @@ defined( 'ABSPATH' ) || exit;
  */
 if ( ! function_exists( 'minimog_child_enqueue_scripts' ) ) {
 	function minimog_child_enqueue_scripts() {
-		wp_enqueue_style( 'minimog-child-style', get_stylesheet_directory_uri() . '/style.css' );
+		wp_enqueue_style( 'minimog-child-style', get_stylesheet_directory_uri() . '/style.css', array(), '1.0.1' );
+    wp_enqueue_style( 'minimog-child-style-custom', get_stylesheet_directory_uri() . '/custom-style.css', array(), '1.0.2' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'minimog_child_enqueue_scripts', 15 );
@@ -374,8 +375,8 @@ function apmmust_add_shipping_fee_option_page() {
 
 add_action( 'wp_enqueue_scripts', 'apmmust_enqueue_scripts', 10 );
 function apmmust_enqueue_scripts() {
-  wp_enqueue_script( 'apmmust-main-js', get_stylesheet_directory_uri() . '/main.js', array('jquery'), '0.0.1', true );
-  wp_localize_script( 'apmmust-main-js', 'apmmust_ajax_obj', array('ajaxurl' => admin_url('admin-ajax.php' )));
+  wp_enqueue_script( 'the-apmmust-main-js', get_stylesheet_directory_uri() . '/the-main.js', array('jquery'), '0.0.2', true );
+  wp_localize_script( 'the-apmmust-main-js', 'apmmust_ajax_obj', array('ajaxurl' => admin_url('admin-ajax.php' )));
 }
 
 add_shortcode('shipping_calculator', 'apmmust_shipping_calculator');
